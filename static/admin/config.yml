@@ -10,7 +10,7 @@ public_folder: /img
 collections:
   - name: 'painting'
     label: 'Painting'
-    folder: 'content/{{year}}/paint'
+    folder: 'content/paint'
     create: true
     # slug: 'index'
     media_folder: ''

@@ -1,6 +1,8 @@
-import * as React from "react"
+// import * as React from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 
 const Outer = styled.header`
@@ -48,73 +50,55 @@ const Nav = styled.nav`
  }
 `
 
-const Header = ({ artist }) => (
-  <Outer>
-    <Inner>
-      <H1>
-        <StyledLink to="/">
-          {artist.name}
-        </StyledLink>
-      </H1>
-      <H2>{artist.full_name}</H2>
-      <Nav>
-        <ul>
-          <li>paint</li>
-          <li>
-            <ul>
-              <li>2020</li>
-              <li>2018</li>
-            </ul>
-          </li>
-          <li>info</li>
-          <li>cv</li>
-        </ul>
-      </Nav>
-    </Inner>
-  </Outer>
-)
+const Header = ({ artist }) => {
+  // query for distinct painting years
+  const data = useStaticQuery(graphql`
+    query paintYearQuery {
+      allMarkdownRemark {
+        distinct(field: frontmatter___year)
+      }
+    }
+  `)
 
-// const Header = ({ artist }) => (
-//   <header
-//     style={{
-//       // background: `rebeccapurple`,
-//       marginBottom: `1.45rem`,
-//     }}
-//   >
-//     <div
-//       style={{
-//         margin: `0 auto`,
-//         maxWidth: 960,
-//         padding: `1.45rem 1.0875rem`,
-//       }}
-//     >
-//       <h1 style={{ margin: 0 }}>
-//         <Link
-//           to="/"
-//           style={{
-//             color: `inherit`,
-//             textDecoration: `none`,
-//           }}
-//         >
-//           {artist.name}
-//         </Link>
-//       </h1>
-//       <h2>
-//           {artist.full_name}
-//       </h2>
-//       <div>
-//           <nav>
-//             <ul style={{ display: "flex", flex: 1, flexDirection: "column"}}>
-//               <li>Paint</li>
-//               <li>info</li>
-//               <li>CV</li>
-//             </ul>
-//           </nav>
-//         </div>
+  const { distinct } = data.allMarkdownRemark
 
-//     </div>
-//   </header>
-// )
+  // get year only
+  let years = distinct.map(dateStr => parseInt(dateStr))
+  // sort descending
+  years.sort().reverse();
+
+  console.log(years)
+
+  return (
+    <Outer>
+      <Inner>
+        <H1>
+          <StyledLink to="/">
+            {artist.name}
+          </StyledLink>
+        </H1>
+        <H2>{artist.full_name}</H2>
+        <Nav>
+          <ul>
+            <li>paint</li>
+            <li>
+              <ul>
+                {years.map(year => (
+                  <li key={year}>
+                    {year}
+                  </li>
+                ))}
+              </ul>
+            </li>
+            <li>info</li>
+            <li>cv</li>
+          </ul>
+        </Nav>
+      </Inner>
+    </Outer>
+  );
+}
+
 
 // Header.propTypes = {
 //   siteTitle: PropTypes.string,
@@ -125,3 +109,23 @@ const Header = ({ artist }) => (
 // }
 
 export default Header
+
+// export const pageQuery = graphql`
+// query paintYearQuery {
+//   allMarkdownRemark {
+//     distinct(field: frontmatter___year)
+//   }
+// }
+// `
+
+// export const pageQuery = graphql`
+// query paintYearQuery {
+//   allMarkdownRemark {
+//     nodes {
+//       frontmatter {
+//         year(formatString: "YYYY")
+//       }
+//     }
+//   }
+// }
+// `

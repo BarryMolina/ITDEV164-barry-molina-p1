@@ -26,7 +26,7 @@ collections:
     files:
       - label: 'Info Page'
         name: 'info'
-        file: 'content/info.yml'
+        file: 'content/pages/info.yml'
         fields:
           - { label: Bio, name: bio, widget: markdown }
       - label: 'CV Page'

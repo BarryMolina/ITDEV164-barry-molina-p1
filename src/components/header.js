@@ -65,7 +65,7 @@ const Header = ({ artist }) => {
   // get year only
   let years = distinct.map(dateStr => parseInt(dateStr))
   // sort descending
-  years.sort().reverse();
+  years.sort().reverse()
 
   console.log(years)
 

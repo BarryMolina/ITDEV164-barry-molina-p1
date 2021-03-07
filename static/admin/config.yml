@@ -21,5 +21,20 @@ collections:
       - { label: 'Year Created', name: 'year', widget: 'datetime', date_format: 'YYYY'}
       - { label: 'Painting Image', name: 'painting', widget: 'image', allow_multiple: false}
       - { label: 'Description', name: 'description', widget: 'text' }
+  - label: 'Pages'
+    name: 'pages'
+    files:
+      - label: 'Info Page'
+        name: 'info'
+        file: 'content/info.yml'
+        fields:
+          - { label: Bio, name: bio, widget: markdown }
+      - label: 'CV Page'
+        name: 'cv'
+        file: 'content/cv.yml'
+        fields:
+          - { label: CV, name: cv, widget: markdown }
+      
+  
 
 

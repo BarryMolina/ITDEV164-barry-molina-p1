@@ -12,13 +12,13 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-netlify-cms`,
     `gatsby-plugin-styled-components`,
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     path: `${__dirname}/content/blog`,
-    //     name: `blog`,
-    //   },
-    // },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

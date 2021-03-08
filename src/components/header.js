@@ -84,8 +84,8 @@ const Header = ({ artist }) => {
                 ))}
               </ul>
             </li>
-            <li>info</li>
-            <li>cv</li>
+            <li><StyledLink to="/info">info</StyledLink></li>
+            <li><StyledLink to="/cv">cv</StyledLink></li>
           </ul>
         </Nav>
       </Inner>
@@ -103,23 +103,3 @@ const Header = ({ artist }) => {
 // }
 
 export default Header
-
-// export const pageQuery = graphql`
-// query paintYearQuery {
-//   allMarkdownRemark {
-//     distinct(field: frontmatter___year)
-//   }
-// }
-// `
-
-// export const pageQuery = graphql`
-// query paintYearQuery {
-//   allMarkdownRemark {
-//     nodes {
-//       frontmatter {
-//         year(formatString: "YYYY")
-//       }
-//     }
-//   }
-// }
-// `

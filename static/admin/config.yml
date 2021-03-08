@@ -42,7 +42,7 @@ collections:
         file: 'content/pages/cv.yml'
         fields:
           - { label: 'CV', name: 'body', widget: 'markdown' }
-          - { label: 'Today's Date', name: 'last-edited', widget: 'datetime' }
+          - { label: "Today's Date", name: 'last-edited', widget: 'datetime' }
       
   
 

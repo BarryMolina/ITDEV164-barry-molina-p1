@@ -12,15 +12,22 @@ collections:
     label: 'Painting'
     folder: 'content/paint'
     create: true
-    # slug: 'index'
     media_folder: ''
     public_folder: ''
     path: '{{slug}}/index'
+    identifier_field: 'slug'
     fields:
+      - label: 'Slug'
+        name: 'slug'
+        description: 'A shortend title no longer than 30 characters'
+        pattern: '^.{0,30}$', 'No more than 30 characters'
+        widget: 'string' 
+        required: 'true'
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Year Created', name: 'year', widget: 'datetime', date_format: 'YYYY'}
-      - { label: 'Painting Image', name: 'painting', widget: 'image', allow_multiple: false}
-      - { label: 'Description', name: 'description', widget: 'text' }
+      - { label: 'Year Created', name: 'year', widget: 'datetime', date_format: 'YYYY', format: 'L' }
+      - { label: 'Painting Image', name: 'painting', widget: 'image', allow_multiple: false }
+      - { label: 'Description', name: 'description', widget: 'markdown' }
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'painting' }
   - label: 'Pages'
     name: 'pages'
     files:
@@ -28,12 +35,12 @@ collections:
         name: 'info'
         file: 'content/pages/info.yml'
         fields:
-          - { label: Bio, name: bio, widget: markdown }
+          - { label: 'Bio', name: 'body', widget: 'markdown' }
       - label: 'CV Page'
         name: 'cv'
         file: 'content/pages/cv.yml'
         fields:
-          - { label: CV, name: cv, widget: markdown }
+          - { label: 'CV', name: 'body', widget: 'markdown' }
       
   
 

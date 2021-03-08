@@ -36,7 +36,7 @@ collections:
         file: 'content/pages/info.yml'
         fields:
           - { label: 'Bio', name: 'body', widget: 'markdown' }
-          - { label: 'Today's Date', name: 'last-edited', widget: 'datetime' }
+          - { label: "Today's Date", name: 'last-edited', widget: 'datetime' }
       - label: 'CV Page'
         name: 'cv'
         file: 'content/pages/cv.yml'

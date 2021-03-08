@@ -36,6 +36,7 @@ collections:
         slug: 'info'
         file: 'content/pages/info.md'
         fields:
+          - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'info-page' }
           - { label: "Today's Date", name: 'last-edited', widget: 'datetime' }
           - { label: 'Bio', name: 'body', widget: 'markdown' }
       - label: 'CV Page'
@@ -43,6 +44,7 @@ collections:
         slug: 'cv'
         file: 'content/pages/cv.md'
         fields:
+          - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'info-page' }
           - { label: "Today's Date", name: 'last-edited', widget: 'datetime' }
           - { label: 'CV', name: 'body', widget: 'markdown' }
       

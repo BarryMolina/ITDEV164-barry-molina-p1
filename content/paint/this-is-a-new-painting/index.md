@@ -1,7 +1,7 @@
 ---
 slug: this is a new painting
 title: this is a new painting
-year: March 7, 2021
+year: 2021
 painting: emtripp5-web.jpg
 layout: painting
 description: |-

@@ -1,7 +1,7 @@
 ---
 slug: To Know Her is to Love Her
 title: To Know Her is to Love Her Completely
-year: 01/01/2020
+year: 2020
 painting: emtripp1-web.jpg
 layout: painting
 description: |-

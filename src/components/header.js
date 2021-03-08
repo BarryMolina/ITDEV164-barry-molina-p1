@@ -60,14 +60,8 @@ const Header = ({ artist }) => {
     }
   `)
 
-  const { distinct } = data.allMarkdownRemark
-
-  // get year only
-  let years = distinct.map(dateStr => parseInt(dateStr))
   // sort descending
-  years.sort().reverse()
-
-  console.log(years)
+  let years = data.allMarkdownRemark.distinct.sort().reverse()
 
   return (
     <Outer>

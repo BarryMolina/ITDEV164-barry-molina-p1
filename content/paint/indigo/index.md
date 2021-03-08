@@ -1,7 +1,7 @@
 ---
 slug: Indigo
 title: Indigo
-year: 2018-01-01T06:00:00.000Z
+year: 2018
 painting: indigo_emilytripp.jpg
 description: |-
   Indigo

@@ -33,13 +33,15 @@ collections:
     files:
       - label: 'Info Page'
         name: 'info'
-        file: 'content/pages/info.yml'
+        slug: 'info'
+        file: 'content/pages/info.md'
         fields:
           - { label: "Today's Date", name: 'last-edited', widget: 'datetime' }
           - { label: 'Bio', name: 'body', widget: 'markdown' }
       - label: 'CV Page'
         name: 'cv'
-        file: 'content/pages/cv.yml'
+        slug: 'cv'
+        file: 'content/pages/cv.md'
         fields:
           - { label: "Today's Date", name: 'last-edited', widget: 'datetime' }
           - { label: 'CV', name: 'body', widget: 'markdown' }

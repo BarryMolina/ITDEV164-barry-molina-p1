@@ -24,7 +24,7 @@ collections:
         widget: 'string' 
         required: true
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Year Created', name: 'year', widget: 'datetime', date_format: 'YYYY', format: 'L' }
+      - { label: 'Year Created', name: 'year', widget: 'datetime', date_format: 'YYYY', format: 'LL' }
       - { label: 'Painting Image', name: 'painting', widget: 'image', allow_multiple: false }
       - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'painting' }
       - { label: 'Description', name: 'description', widget: 'markdown' }

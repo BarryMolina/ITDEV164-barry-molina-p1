@@ -2,41 +2,41 @@ const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const { Component } = require("react")
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions
+// exports.createPages = async ({ graphql, actions, reporter }) => {
+//   const { createPage } = actions
 
 
-  // Define a template for the info pages
-  const infoPage = path.resolve(`./src/templates/info-page.js`)
+//   // Define a template for the info pages
+//   const infoPage = path.resolve(`./src/templates/info-page.js`)
 
-  // Get info pages
-  const result = await graphql(`
-    {
-      allMarkdownRemark(filter: {frontmatter: {layout: {eq: "info-page"}}}) {
-        nodes {
-          fields {
-            slug
-          }
-        }
-      }
-    }
-  `)
+//   // Get info pages
+//   const result = await graphql(`
+//     {
+//       allMarkdownRemark(filter: {frontmatter: {layout: {eq: "info-page"}}}) {
+//         nodes {
+//           fields {
+//             slug
+//           }
+//         }
+//       }
+//     }
+//   `)
 
-  if (result.errors) {
-    reporter.panicOnBuild(`There was an error loading the info pages`)
-    return
-  }
+//   if (result.errors) {
+//     reporter.panicOnBuild(`There was an error loading the info pages`)
+//     return
+//   }
 
-  result.data.allMarkdownRemark.nodes.forEach((node) => {
-    createPage({
-      path: node.fields.slug,
-      component: infoPage,
-      context: {
-        slug: node.fields.slug
-      },
-    })
-  })
-}
+//   result.data.allMarkdownRemark.nodes.forEach((node) => {
+//     createPage({
+//       path: node.fields.slug,
+//       component: infoPage,
+//       context: {
+//         slug: node.fields.slug
+//       },
+//     })
+//   })
+// }
 
 
 //   // Define a template for blog post

@@ -22,7 +22,7 @@ collections:
         description: 'A shortend title no longer than 30 characters'
         pattern: [ '^.{0,30}$', 'No more than 30 characters' ]
         widget: 'string' 
-        required: 'true'
+        required: true
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Year Created', name: 'year', widget: 'datetime', date_format: 'YYYY', format: 'L' }
       - { label: 'Painting Image', name: 'painting', widget: 'image', allow_multiple: false }

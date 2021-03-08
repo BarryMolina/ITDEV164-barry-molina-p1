@@ -1,5 +1,5 @@
 ---
-last-edited: 2021-03-08T15:56:15.883Z
+last-edited: 2021-03-08T17:00:42.127Z
 ---
 Emily Tripp is an artist working with ceramics and painting. In 1995 she
 was born in Lansing, MI, then raised in Detroit, MI and later moved on to live

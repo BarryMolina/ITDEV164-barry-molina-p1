@@ -1,5 +1,6 @@
 ---
 last-edited: 2021-03-08T17:27:22.362Z
+layout: info-page
 ---
   **BIOGRAPHY**
 

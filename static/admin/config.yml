@@ -20,7 +20,7 @@ collections:
       - label: 'Slug'
         name: 'slug'
         description: 'A shortend title no longer than 30 characters'
-        pattern: '^.{0,30}$', 'No more than 30 characters'
+        pattern: [ '^.{0,30}$', 'No more than 30 characters' ]
         widget: 'string' 
         required: 'true'
       - { label: 'Title', name: 'title', widget: 'string' }

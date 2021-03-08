@@ -24,8 +24,8 @@ collections:
         widget: 'string' 
         required: true
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Year Created', name: 'year', widget: 'number', value_type: 'int', min: 1995, max: 2050 }
-      - { label: 'Painting Image', name: 'painting', widget: 'image', allow_multiple: false }
+      - { label: 'Year Created', name: 'year', widget: 'number', value_type: 'int', min: 1995, max: 2050, default: 2021}
+      - { label: 'Painting Image', name: 'image', widget: 'image', allow_multiple: false }
       - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'painting' }
       - { label: 'Description', name: 'description', widget: 'markdown' }
   - label: 'Pages'

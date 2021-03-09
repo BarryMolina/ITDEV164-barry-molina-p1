@@ -17,7 +17,6 @@ const GridItem = styled.div`
 
 const PaintYear = ({ data }) => { 
     
-  console.log(data)
   return (
     <Layout>
       <GridContainer>

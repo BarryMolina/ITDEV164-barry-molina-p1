@@ -5,22 +5,30 @@ const { Component } = require("react")
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  const yearsResult = await graphql(`
-    query paintYearQuery {
-      allMarkdownRemark {
-        distinct(field: frontmatter___year)
+  const result = await graphql(`
+  query MyQuery {
+    allMarkdownRemark(filter: {frontmatter: {layout: {eq: "paint"}}}) {
+      distinct(field: frontmatter___year)
+      nodes {
+        fields {
+          slug
+        }
+        frontmatter {
+          year
+        }
       }
     }
+  }
   `)
 
-  if (yearsResult.errors) {
-    reporter.panicOnBuild(`There was an error loading the info pages`)
+  if (result.errors) {
+    reporter.panicOnBuild(`There was an error loading the paint data`)
     return
   }
 
-  const years = yearsResult.data.allMarkdownRemark.distinct.map(year => parseInt(year))
-  console.log(years.map(year => parseInt(year)))
+  const years = result.data.allMarkdownRemark.distinct.map(year => parseInt(year))
 
+  // Create a page for each year of paintings
   years.forEach(year => {
     createPage({
       path: `/paint/${year}/`,
@@ -29,8 +37,25 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         year: year
       }
     })
-  });
+  })
+
+  const paintings = result.data.allMarkdownRemark.nodes
+
+  // Create a modal page for each painting
+  paintings.forEach(painting => {
+    console.log("creating painting at " + `/paint/${painting.frontmatter.year}${painting.fields.slug}`)
+    createPage({
+      path: `/paint/${painting.frontmatter.year}${painting.fields.slug}`,
+      component: path.resolve(`./src/templates/painting.js`),
+      context: {
+        slug: painting.fields.slug
+      }
+    })
+  })
 }
+
+
+
 
 
 //   // Define a template for the info pages

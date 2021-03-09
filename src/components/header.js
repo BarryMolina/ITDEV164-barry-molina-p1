@@ -79,7 +79,7 @@ const Header = ({ artist }) => {
               <ul>
                 {years.map(year => (
                   <li key={year}>
-                    {year}
+                    <StyledLink to={`/paint/${year}`}>{year}</StyledLink>
                   </li>
                 ))}
               </ul>

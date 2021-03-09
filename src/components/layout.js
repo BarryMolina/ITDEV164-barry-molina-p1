@@ -21,8 +21,9 @@
  const Content = styled.div`
    margin: 0 auto;
    max-width: 960px;
-   padding: 0 1.0875rem 1.45rem;
-   padding-top: 0;
+   /* padding: 0 1.0875rem 1.45rem; */
+   /* padding-top: 0; */
+   padding: 1.5rem 1rem
  `
  
  const Footer = styled.div`

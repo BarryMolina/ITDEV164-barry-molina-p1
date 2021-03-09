@@ -2,26 +2,38 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Layout from '../components/layout'
+import styled from "styled-components"
+
+const GridContainer = styled.div`
+  display: grid;
+  grid-column-gap: 1.3rem;
+  grid-row-gap: 1.3rem;
+  grid-template-columns: auto auto auto;
+`
+
+const GridItem = styled.div`
+  /* box-shadow: 1px 1px 5px black; */
+`
 
 const PaintYear = ({ data }) => { 
     
   console.log(data)
   return (
     <Layout>
-      <ul>
+      <GridContainer>
         {
           data.allMarkdownRemark.nodes.map(node => {
             return (
-              <li key={node.id}>
+              <GridItem key={node.id}>
                 <GatsbyImage
                   image={node.frontmatter.image.childImageSharp.gatsbyImageData}
                   alt={node.frontmatter.title}
                 />
-              </li>
+              </GridItem>
             )
           })
         }
-      </ul>
+      </GridContainer>
     </Layout>
   )
 }
@@ -38,7 +50,12 @@ query paintQuery($year: Int) {
         title
         image {
           childImageSharp {
-            gatsbyImageData
+            gatsbyImageData(
+              # transformOptions: {
+              #   trim: 50,
+              # },
+              width: 300
+              )
           }
         }
       }

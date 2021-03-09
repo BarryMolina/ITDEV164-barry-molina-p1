@@ -6,15 +6,25 @@ import styled from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
+const StyledDiv = styled.div`
+  position: relative;
+`
 const Welcome = styled.div`
-  margin-top: 19rem;
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  p {
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
 `
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
     <Welcome>
-      <h1>Hi I'm Emily.</h1>
-      <h2>Nice to meet me.</h2>
+      <p>My name is Emily.</p>
+      <p>I paint stuff.</p>
     </Welcome>
     {/* <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>

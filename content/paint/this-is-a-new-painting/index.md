@@ -2,8 +2,8 @@
 slug: this is a new painting
 title: this is a new painting
 year: 2021
-painting: emtripp5-web.jpg
-layout: painting
+image: emtripp5-web.jpg
+layout: paint
 description: |-
   this is a new painting
 

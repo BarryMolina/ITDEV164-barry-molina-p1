@@ -2,7 +2,8 @@
 slug: The Struggle of Fish Swimming
 title: The Struggle of Fish Swimming Upstream
 year: 2018
-painting: the-struggle-of-fish-swimming-upstream.jpg
+image: the-struggle-of-fish-swimming-upstream.jpg
+layout: paint
 description: |-
   The Struggle of Fish Swimming Upstream
   2018

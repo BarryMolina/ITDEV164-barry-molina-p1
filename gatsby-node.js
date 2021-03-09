@@ -2,8 +2,35 @@ const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const { Component } = require("react")
 
-// exports.createPages = async ({ graphql, actions, reporter }) => {
-//   const { createPage } = actions
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions
+
+  const yearsResult = await graphql(`
+    query paintYearQuery {
+      allMarkdownRemark {
+        distinct(field: frontmatter___year)
+      }
+    }
+  `)
+
+  if (yearsResult.errors) {
+    reporter.panicOnBuild(`There was an error loading the info pages`)
+    return
+  }
+
+  const years = yearsResult.data.allMarkdownRemark.distinct.map(year => parseInt(year))
+  console.log(years.map(year => parseInt(year)))
+
+  years.forEach(year => {
+    createPage({
+      path: `/paint/${year}/`,
+      component: path.resolve(`./src/templates/paint.js`),
+      context: {
+        year: year
+      }
+    })
+  });
+}
 
 
 //   // Define a template for the info pages

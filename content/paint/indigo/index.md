@@ -2,7 +2,8 @@
 slug: Indigo
 title: Indigo
 year: 2018
-painting: indigo_emilytripp.jpg
+image: indigo_emilytripp.jpg
+layout: paint
 description: |-
   Indigo
   2018

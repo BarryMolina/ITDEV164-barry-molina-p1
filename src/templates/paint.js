@@ -54,8 +54,9 @@ query paintQuery($year: Int) {
               # transformOptions: {
               #   trim: 50,
               # },
-              width: 300
-              )
+              width: 300,
+              placeholder: NONE,
+            )
           }
         }
       }

@@ -4,8 +4,7 @@ title: this is a new painting
 year: 2021
 image: emtripp5-web.jpg
 layout: paint
-description: |-
-  this is a new painting
-
-  2021
 ---
+this is a new painting
+
+2021

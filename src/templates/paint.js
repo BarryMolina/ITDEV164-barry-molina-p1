@@ -4,8 +4,13 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Layout from '../components/layout'
 import styled from "styled-components"
 
+const CenteredDiv = styled.div`
+  margin: 0 auto;
+`
 const GridContainer = styled.div`
   display: grid;
+  justify-content: center;
+  align-items: center;
   grid-column-gap: 1.3rem;
   grid-row-gap: 1.3rem;
   grid-template-columns: auto auto auto;
@@ -23,6 +28,8 @@ const PaintYear = ({ location, data }) => {
     
   return (
     <Layout>
+      <CenteredDiv>
+
       <GridContainer>
         {
           data.allMarkdownRemark.nodes.map(node => {
@@ -38,6 +45,7 @@ const PaintYear = ({ location, data }) => {
           })
         }
       </GridContainer>
+      </CenteredDiv>
     </Layout>
   )
 }

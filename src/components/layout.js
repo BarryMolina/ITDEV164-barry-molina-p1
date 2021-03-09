@@ -19,8 +19,8 @@ import GlobalStyle from './GlobalStyle'
  `
  
  const Content = styled.div`
-   margin: 0 auto;
-   max-width: 960px;
+   /* margin: 0 auto; */
+   flex-grow: 1;
    padding: 1.5rem 1rem;
  `
  
@@ -54,11 +54,11 @@ import GlobalStyle from './GlobalStyle'
            <main>{children}</main>
          </Content>
        </FlexContainer>
-       <Footer>
+       {/* <Footer>
          © {new Date().getFullYear()}, Built with
          {` `}
          <a href="https://www.gatsbyjs.com">Gatsby</a>
-       </Footer>
+       </Footer> */}
      </>
    )
  }

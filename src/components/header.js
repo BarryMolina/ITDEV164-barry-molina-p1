@@ -6,7 +6,9 @@ import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 
 const Outer = styled.header`
+  min-width: 200px;
   margin-bottom: 1.45rem;
+  margin-left: 1.7rem;
 `
 
 const Inner = styled.div`

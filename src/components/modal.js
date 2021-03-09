@@ -7,11 +7,12 @@ const ModalContainer = styled.div`
   position: relative;
 `
 
-const CloseButton = styled.Link`
+const CloseButton = styled(Link)`
   position: absolute;
   top: 20px;
-  right: 20px;
-
+  right: 25px;
+  text-decoration: none;
+  color: hsla(0, 0%, 0%, 0.8);
 `
 
 const Content = styled.div`

@@ -27,7 +27,7 @@ collections:
       - { label: 'Year Created', name: 'year', widget: 'number', value_type: 'int', min: 1995, max: 2050, default: 2021}
       - { label: 'Painting Image', name: 'image', widget: 'image', allow_multiple: false }
       - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'paint' }
-      - { label: 'Description', name: 'description', widget: 'markdown' }
+      - { label: 'Description', name: 'body', widget: 'markdown' }
   - label: 'Pages'
     name: 'pages'
     files:

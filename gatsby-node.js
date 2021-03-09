@@ -45,7 +45,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   paintings.forEach(painting => {
     console.log("creating painting at " + `/paint/${painting.frontmatter.year}${painting.fields.slug}`)
     createPage({
-      path: `/paint${painting.fields.slug}`,
+      path: `/paint/${painting.frontmatter.year}${painting.fields.slug}`,
       component: path.resolve(`./src/templates/painting.js`),
       context: {
         slug: painting.fields.slug

@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Layout from '../components/layout'
 import styled from "styled-components"
@@ -12,10 +12,14 @@ const GridContainer = styled.div`
 `
 
 const GridItem = styled.div`
+  &:hover {
+    cursor: pointer;
+  }
   /* box-shadow: 1px 1px 5px black; */
 `
 
-const PaintYear = ({ data }) => { 
+const PaintYear = ({ location, data }) => { 
+  console.log(location)
     
   return (
     <Layout>
@@ -23,10 +27,11 @@ const PaintYear = ({ data }) => {
         {
           data.allMarkdownRemark.nodes.map(node => {
             return (
-              <GridItem key={node.id}>
+              <GridItem key={node.id} >
                 <GatsbyImage
-                  image={node.frontmatter.image.childImageSharp.gatsbyImageData}
+                  image={getImage(node.frontmatter.image)}
                   alt={node.frontmatter.title}
+                  onClick={() => navigate(`${location.pathname}${node.fields.slug}`)}
                 />
               </GridItem>
             )
@@ -45,6 +50,10 @@ query paintQuery($year: Int) {
     filter: {frontmatter: {layout: {eq: "paint"}, year: {eq: $year}}}
   ) {
     nodes {
+      id
+      fields {
+        slug
+      }
       frontmatter {
         title
         image {
@@ -59,7 +68,6 @@ query paintQuery($year: Int) {
           }
         }
       }
-      id
     }
   }
 }

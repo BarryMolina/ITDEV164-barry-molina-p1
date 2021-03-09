@@ -32,6 +32,31 @@ const StyledLink = styled(Link)`
   color: hsla(0, 0%, 0%, 0.8);
   text-decoration: none;
 `
+const UnderlinedLink = styled(Link)`
+  color: hsla(0, 0%, 0%, 0.8);
+  text-decoration: none;
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: hsla(0, 0%, 0%, 0.8);
+    visibility: hidden;
+    transition: all 0.2s ease-in-out;
+  }
+  &:hover:before {
+    visibility: visible;
+    width: 100%;
+  }
+  &.active:before {
+    visibility: visible;
+    width: 100%;
+    transition: none;
+  }
+`
 
 const Nav = styled.nav`
  display: "flex";
@@ -79,13 +104,16 @@ const Header = ({ artist }) => {
               <ul>
                 {years.map(year => (
                   <li key={year}>
-                    <StyledLink to={`/paint/${year}`}>{year}</StyledLink>
+                    <UnderlinedLink
+                      to={`/paint/${year}`}
+                      activeClassName="active"
+                    >{year}</UnderlinedLink>
                   </li>
                 ))}
               </ul>
             </li>
-            <li><StyledLink to="/info">info</StyledLink></li>
-            <li><StyledLink to="/cv">cv</StyledLink></li>
+            <li><UnderlinedLink to="/info" activeClassName="active">info</UnderlinedLink></li>
+            <li><UnderlinedLink to="/cv" activeClassName="active">cv</UnderlinedLink></li>
           </ul>
         </Nav>
       </Inner>

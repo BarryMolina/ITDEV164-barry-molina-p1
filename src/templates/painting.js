@@ -2,8 +2,9 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Modal from '../components/modal'
-import Layout from '../components/layout'
 import styled from "styled-components"
+
+import SEO from '../components/seo'
 
 const FlexContainer = styled.div`
   display: flex;
@@ -59,6 +60,7 @@ const Painting = ({ data }) => {
 
   return (
     <Modal prevPage={`/paint/${year}`}>
+      <SEO title={`${title}`} />
       <FlexContainer>
         <InfoItem>
           <Info>

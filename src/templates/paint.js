@@ -1,8 +1,10 @@
 import React from 'react'
 import { graphql, navigate } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import Layout from '../components/layout'
 import styled from "styled-components"
+
+import Layout from '../components/layout'
+import SEO from '../components/seo'
 
 const CenteredDiv = styled.div`
   margin: 0 auto;
@@ -23,11 +25,12 @@ const GridItem = styled.div`
   /* box-shadow: 1px 1px 5px black; */
 `
 
-const PaintYear = ({ location, data }) => { 
+const PaintYear = ({ pageContext, location, data }) => { 
   console.log(location)
     
   return (
     <Layout>
+      <SEO title={`Paint ${pageContext.year}`} />
       <CenteredDiv>
 
       <GridContainer>

@@ -1,10 +1,14 @@
 ---
-slug: this is a new painting
-title: this is a new painting
-year: 2021
+slug: Not in Kansas
+title: Not in Kansas
+year: 2020
 image: emtripp5-web.jpg
 layout: paint
 ---
-this is a new painting
+Not in Kansas
 
-2021
+Oil and Oil Pastel on Canvas
+
+2020
+
+9x12”

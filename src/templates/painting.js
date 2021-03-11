@@ -83,7 +83,7 @@ const Painting = ({ data }) => {
 export default Painting
 
 export const pageQuery = graphql`
-  query MyQuery($slug: String!) {
+  query paintingQuery($slug: String!) {
     markdownRemark(fields: {slug: {eq: $slug}}) {
       html
       frontmatter {

@@ -81,7 +81,6 @@ const IndexPage = ({ data }) => {
         <p>My name is Emily.</p>
         <p>I paint stuff.</p>
       </Welcome>
-      TransitionGroup will 
       <TransitionGroup component={null}>
         {/* This Transition component will be swapped out by TransitionGroup when the key attribute changes. */}
         {/* Class names starting with image-* will be applied while entering and leaving */}

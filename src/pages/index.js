@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from "react"
 import { graphql, Link } from "gatsby"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import { Transition } from 'react-transition-group'
+import { Transition, CSSTransition, TransitionGroup } from 'react-transition-group'
 import styled from "styled-components"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+
+const transitionSpeed = 2;
+const slideSpeed = 5;
 
 const StyledDiv = styled.div`
   position: relative;
 `
 const Welcome = styled.div`
   position: absolute;
-  top: 10%;
-  left: 45%;
+  top: 45%;
+  right: 13%;
   p {
     font-size: 1.7rem;
     font-weight: 500;
@@ -27,15 +30,34 @@ const ImageSlider = styled(GatsbyImage)`
     from { opacity: 0; }
     to { opacity: 1; }
   } */
-  transition: opacity 1s;
-  opacity: ${({ animate }) => animate ? 1 : 0};
-
+  /* transition: opacity 1s;
+  opacity: ${({ state }) => (state === "entering" || state === "entered") ? 1 : 0}; */
+  position: absolute;
+  top: 5%;
+  left: 22%;
+  &.image-enter {
+    opacity: 0;
+  }
+  &.image-enter-active {
+    opacity: 1;
+    transition: opacity ${transitionSpeed}s;
+  }
+  &.image-exit {
+    opacity: 1;
+  }
+  &.image-exit-active {
+    opacity: 0;
+    transition: opacity ${transitionSpeed}s;
+  }
+  /* &.image-leave-done {
+    opacity: 0
+  } */
 `
 
 const IndexPage = ({ data }) => { 
   const [index, setIndex] = useState(0)
-  const [playSlides, setPlaySlides] = useState(false)
-  const [animate, setAnimate] = useState(true)
+  const [playSlides, setPlaySlides] = useState(true)
+  // const [animate, setAnimate] = useState(false)
 
   const slides = data.allMarkdownRemark.nodes
   const lenSlides = slides.length - 1;
@@ -50,7 +72,7 @@ const IndexPage = ({ data }) => {
         // pass in a function that receives the current and then updates it
         // setIndex(currIndex => currIndex + 1)
         nextSlide()
-      }, 2000)
+      }, slideSpeed * 1000)
     }
     return () => {
       clearTimeout(timer)
@@ -58,11 +80,25 @@ const IndexPage = ({ data }) => {
   })
 
   const nextSlide = () => {
-    setIndex(prevIdx => prevIdx === lenSlides ? 0 : prevIdx + 1)
+    // setAnimate(false)
+    // setAnimate(false)
+    // setTimeout(() => { 
+    //   setIndex(prevIdx => prevIdx === lenSlides ? 0 : prevIdx + 1)
+    //   setAnimate(true)
+    // }, 1000)
+    // setAnimate(true)
+      setIndex(prevIdx => prevIdx === lenSlides ? 0 : prevIdx + 1)
   }
 
   const previousSlide = () => {
-    setIndex(prevIdx => prevIdx === 0 ? lenSlides : prevIdx - 1)
+    // setAnimate(false)
+    // setTimeout(() => { 
+    //   setIndex(prevIdx => prevIdx === 0 ? lenSlides : prevIdx - 1)
+    //   setAnimate(true)
+    // }, 1000)
+    // setIndex(prevIdx => prevIdx === 0 ? lenSlides : prevIdx - 1)
+    // setAnimate(true)
+      setIndex(prevIdx => prevIdx === 0 ? lenSlides : prevIdx - 1)
   }
 
   return (
@@ -71,18 +107,27 @@ const IndexPage = ({ data }) => {
       <Welcome>
         <p>My name is Emily.</p>
         <p>I paint stuff.</p>
-        {/* <Transition in={animate} timeout={500}>
-          {(state) => ( */}
-            <ImageSlider animate={animate} image={getImage(slides[index].frontmatter.image)}/>
-          {/* )}
+
+        {/* <Transition in={animate} timeout={1000}>
+          {(state) => (
+            <ImageSlider state={state} image={getImage(slides[index].frontmatter.image)}/>
+          )}
         </Transition> */}
-        <p>We're on index {index}</p>
-        <button onClick={() => setIndex(0)}>reset</button>
+        {/* <CSSTransition in={animate} timeout={2000} classNames="image">
+          <ImageSlider image={getImage(slides[index].frontmatter.image)}/>
+        </CSSTransition> */}
+        {/* <p>We're on index {index}</p> */}
+        {/* <button onClick={() => setIndex(0)}>reset</button>
         <button onClick={() => previousSlide()}>-</button>
         <button onClick={() => nextSlide()}>+</button>
         <button onClick={() => setPlaySlides(play => !play)}>toggle timer</button>
-        <button onClick={() => setAnimate(animate => !animate)}>Toggle animate</button>
+        <button onClick={() => setAnimate(animate => !animate)}>Toggle animate</button> */}
       </Welcome>
+        <TransitionGroup component={null}>
+          <CSSTransition key={index} timeout={transitionSpeed * 1000} classNames="image">
+            <ImageSlider image={getImage(slides[index].frontmatter.image)}/>
+          </CSSTransition>
+        </TransitionGroup>
     </Layout>
   )
  }
@@ -92,7 +137,7 @@ export default IndexPage
 export const slideQuery = graphql`
 query slideQuery {
   allMarkdownRemark(
-    limit: 5
+    # limit: 5
     filter: {frontmatter: {layout: {eq: "paint"}}}
     sort: {fields: frontmatter___title}
   ) {
@@ -105,7 +150,7 @@ query slideQuery {
           childImageSharp {
             gatsbyImageData(
               placeholder: NONE,
-              width: 600
+              width: 550,
             )
           }
         }

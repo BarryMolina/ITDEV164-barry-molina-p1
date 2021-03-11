@@ -7,12 +7,10 @@ import styled from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
+// control slideshow speeds
 const transitionSpeed = 2;
 const slideSpeed = 5;
 
-const StyledDiv = styled.div`
-  position: relative;
-`
 const Welcome = styled.div`
   position: absolute;
   top: 45%;
@@ -29,7 +27,7 @@ const ImageSlider = styled(GatsbyImage)`
   top: 5%;
   left: 22%;
 
-  /* classes added and removed by TransitionGroup */
+  /* classes managed by TransitionGroup */
   &.image-enter {
     opacity: 0;
   }
@@ -52,7 +50,7 @@ const IndexPage = ({ data }) => {
   const slides = data.allMarkdownRemark.nodes
   const lenSlides = slides.length - 1;
 
-  // executes when component renders or re-renders
+  // executes when component renders
   useEffect( () => {
     let timer
 
@@ -81,11 +79,15 @@ const IndexPage = ({ data }) => {
         <p>My name is Emily.</p>
         <p>I paint stuff.</p>
       </Welcome>
+      {/* Set component to null so TransitionGroup doesn't create a surrounding div element */}
       <TransitionGroup component={null}>
-        {/* This Transition component will be swapped out by TransitionGroup when the key attribute changes. */}
+        {/* This Transition component will be swapped out by TransitionGroup when its key attribute changes. */}
         {/* Class names starting with image-* will be applied while entering and leaving */}
         <CSSTransition key={index} timeout={transitionSpeed * 1000} classNames="image">
-          <ImageSlider image={getImage(slides[index].frontmatter.image)}/>
+          <ImageSlider 
+            image={getImage(slides[index].frontmatter.image)}
+            alt={slides[index].frontmatter.title}
+          />
         </CSSTransition>
       </TransitionGroup>
     </Layout>

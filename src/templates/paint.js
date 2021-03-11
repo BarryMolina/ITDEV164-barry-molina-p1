@@ -22,7 +22,6 @@ const GridItem = styled.div`
   &:hover {
     cursor: pointer;
   }
-  /* box-shadow: 1px 1px 5px black; */
 `
 
 const PaintYear = ({ pageContext, location, data }) => { 

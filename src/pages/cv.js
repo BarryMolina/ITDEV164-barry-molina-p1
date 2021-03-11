@@ -10,7 +10,6 @@ const StyledBody = styled.div`
   max-width: 1000px;
   h1 {
     font-size: .9rem;
-    /* margin-bottom: .7rem; */
   }
   p {
     margin-bottom: .5rem;
@@ -19,13 +18,12 @@ const StyledBody = styled.div`
   }
 `
 const CV = ({ data }) => {
-
-    return (
-        <Layout>
-            <SEO title='CV' />
-            <StyledBody dangerouslySetInnerHTML= {{__html: data.markdownRemark.html}}></StyledBody>
-        </Layout>
-    )
+  return (
+    <Layout>
+      <SEO title='CV' />
+      <StyledBody dangerouslySetInnerHTML= {{__html: data.markdownRemark.html}}></StyledBody>
+    </Layout>
+  )
 }
 
 export default CV

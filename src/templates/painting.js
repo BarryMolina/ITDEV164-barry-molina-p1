@@ -44,16 +44,6 @@ const Info = styled.div`
   }
 `
 
-// const StyledImage = styled(GatsbyImage)`
-//   display: block;
-//   max-width: 40%;
-//   margin: 0 auto;
-// `
-
-// const ImageContainer = styled.div`
-//   max-width: 50%;
-// `
-
 const Painting = ({ data }) => {
   const { title, year, image } = data.markdownRemark.frontmatter
   const { html } = data.markdownRemark
